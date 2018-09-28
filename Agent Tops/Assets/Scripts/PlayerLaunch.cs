@@ -13,7 +13,7 @@ public class PlayerLaunch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Z))
         {
             //find spillerens position som vector
             Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y);
@@ -26,14 +26,13 @@ public class PlayerLaunch : MonoBehaviour {
 
         
 	}
-
+    //checker om man rammer jorden
     void OnCollisionEnter2D(Collision2D col)
     {
-        print("hit");
         if (col.gameObject.tag == "Ground")
         {
-            print("boom");
-            GetComponent<Rigidbody2D>().velocity -= GetComponent<Rigidbody2D>().velocity;
+            //hvis man rammer mister man sin fart
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
         }
     }
 }
