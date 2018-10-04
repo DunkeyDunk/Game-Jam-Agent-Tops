@@ -5,6 +5,8 @@ using UnityEngine;
 public class Caught : MonoBehaviour {
 
     GameObject[] pausedObj;
+    public UI_Manager UI;
+
 
     private void Start()
     {
@@ -15,22 +17,8 @@ public class Caught : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            StartCoroutine(waitAndPause());
-            
+            print("Opdaget - Start");
+            UI.Caught();
         }
     }
-
-    IEnumerator waitAndPause()
-    {
-        foreach (GameObject g in pausedObj)
-        {
-            print(g);
-            g.SetActive(true);
-        }
-        print(Time.time);
-        yield return new WaitForSecondsRealtime(1);
-        print(Time.time);
-        Time.timeScale = 0;
-    }
-
 }
