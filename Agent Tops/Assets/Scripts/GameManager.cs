@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public UI_Manager UI;
-    public GameObject canvas;
+    public GameObject caughtCanvas;
     private void Start()
     {
-        canvas.GetComponent<Canvas>().enabled = false;
+        caughtCanvas.GetComponent<Canvas>().enabled = false;
     }
     public void CaughtPause()
     {
         {
             print("Opdaget - GM");
-            canvas.GetComponent<Canvas>().enabled = true;
+            caughtCanvas.GetComponent<Canvas>().enabled = true;
             Time.timeScale = 0f;
         }
     }

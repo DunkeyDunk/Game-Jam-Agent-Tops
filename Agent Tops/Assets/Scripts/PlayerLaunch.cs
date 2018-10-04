@@ -13,16 +13,21 @@ public class PlayerLaunch : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Z) && grounded)
         {
-
+            float i = 0f;
             //find spillerens position som vector
             Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y);
             //find musens position vector og minus spillere vectoren
             Vector2 launch = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y)) - playerPos;
             launch.Normalize();
             //give spilleren fart
+            while (Input.GetKey(KeyCode.Z))
+            {
+                i = i + Time.deltaTime;
+                print(i + " time has passed");
+            }
             if (launch.y >= minLaunchHight)
             {
-                GetComponent<Rigidbody2D>().velocity += launch * power;
+                GetComponent<Rigidbody2D>().velocity += launch * i;
                 grounded = false;
             }
         }
