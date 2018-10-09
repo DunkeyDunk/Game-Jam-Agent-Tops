@@ -6,6 +6,7 @@ using UnityEngine.Animations;
 public class PlayerLaunch : MonoBehaviour {
 
     public GameObject player;
+    public MusicManager MM;
     public float power;
     private bool grounded = true;
     public float minLaunchHight;
@@ -58,6 +59,7 @@ public class PlayerLaunch : MonoBehaviour {
                 animController.SetBool("Grounded", false);
                 animController.SetBool("keyDown", false);
                 grounded = false;
+                MM.Landing();
             }
         }
 
