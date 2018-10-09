@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerLaunch : MonoBehaviour {
 
@@ -11,17 +12,21 @@ public class PlayerLaunch : MonoBehaviour {
     public float maxX;
     public float maxY;
     Vector2 launch;
-
+    public Animator animController;
+    public SpriteRenderer spriteRenderer;
+    
     // Update is called once per frame
     void Update () {
 		if (Input.GetKey(KeyCode.Z) && grounded)
         {
+            animController.SetBool("keyDown", true);
             //find spillerens position som vector
             Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y);
             //find musens position vector og minus spillere vectoren
             launch = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y)) - playerPos;
             //give spilleren fart
             print(launch.x.ToString() + "x " + launch.y.ToString() + "y :Before");
+            Flip(launch.x);
             if (launch.x >= maxX)
             {
                 launch.x = maxX;
@@ -32,7 +37,8 @@ public class PlayerLaunch : MonoBehaviour {
             }
             if (launch.x <= -maxX)
             {
-                launch.x = -maxX;
+
+
             }
             print(launch.x.ToString() + "x " + launch.y.ToString() + "y :After");
 
@@ -49,7 +55,8 @@ public class PlayerLaunch : MonoBehaviour {
             if (launch.y >= minLaunchHight && grounded)
             {
                 GetComponent<Rigidbody2D>().velocity += launch * power;
-
+                animController.SetBool("Grounded", false);
+                animController.SetBool("keyDown", false);
                 grounded = false;
             }
         }
@@ -61,9 +68,22 @@ public class PlayerLaunch : MonoBehaviour {
     {
         if (col.gameObject.tag == "Ground")
         {
+            animController.SetBool("Grounded", true);
             //hvis man rammer mister man sin fart
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             grounded = true;
+            
+        }
+    }
+    void Flip(float x)
+    {
+        if (x >= 0) 
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
         }
     }
 }
