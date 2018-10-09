@@ -1286,6 +1286,46 @@ Prefab:
       propertyPath: UI
       value: 
       objectReference: {fileID: 1819966273}
+    - target: {fileID: 212399924022245426, guid: 14c8946191f985b42adaad6e17bf3f3a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212399924022245426, guid: 14c8946191f985b42adaad6e17bf3f3a,
+        type: 2}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212399924022245426, guid: 14c8946191f985b42adaad6e17bf3f3a,
+        type: 2}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212399924022245426, guid: 14c8946191f985b42adaad6e17bf3f3a,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.8117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 114480344757788626, guid: 14c8946191f985b42adaad6e17bf3f3a,
+        type: 2}
+      propertyPath: sR
+      value: 
+      objectReference: {fileID: 1144596916}
+    - target: {fileID: 114480344757788626, guid: 14c8946191f985b42adaad6e17bf3f3a,
+        type: 2}
+      propertyPath: pC
+      value: 
+      objectReference: {fileID: 1144596915}
+    - target: {fileID: 114480344757788626, guid: 14c8946191f985b42adaad6e17bf3f3a,
+        type: 2}
+      propertyPath: blink
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114480344757788626, guid: 14c8946191f985b42adaad6e17bf3f3a,
+        type: 2}
+      propertyPath: blinkTimer
+      value: 1e+12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14c8946191f985b42adaad6e17bf3f3a, type: 2}
   m_IsPrefabAsset: 0
@@ -1805,6 +1845,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landing: {fileID: 1143987978}
+--- !u!60 &1144596915 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 60791577005197158, guid: 14c8946191f985b42adaad6e17bf3f3a,
+    type: 2}
+  m_PrefabInternal: {fileID: 751440840}
+--- !u!212 &1144596916 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 212399924022245426, guid: 14c8946191f985b42adaad6e17bf3f3a,
+    type: 2}
+  m_PrefabInternal: {fileID: 751440840}
 --- !u!4 &1144596917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4897027207728274, guid: 14c8946191f985b42adaad6e17bf3f3a,
@@ -2775,7 +2825,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4562262028388802, guid: 380dc437343bc6943a565746586e1a02, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 23.75
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 4562262028388802, guid: 380dc437343bc6943a565746586e1a02, type: 2}
       propertyPath: m_LocalPosition.y
