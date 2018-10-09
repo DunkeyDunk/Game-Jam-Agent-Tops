@@ -25,4 +25,12 @@ public class UI_Manager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GM.RestartLevel();
     }
+    public void Exit()
+    {
+        Exit();
+    }
+    public void LoadLevel(string Level)
+    {
+        SceneManager.LoadScene(Level);
+    }
 }
