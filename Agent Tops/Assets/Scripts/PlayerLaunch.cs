@@ -25,31 +25,23 @@ public class PlayerLaunch : MonoBehaviour {
             Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y);
             //find musens position vector og minus spillere vectoren
             launch = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y)) - playerPos;
-            //give spilleren fart
+
             print(launch.x.ToString() + "x " + launch.y.ToString() + "y :Before");
             Flip(launch.x);
-            if (launch.x >= maxX)
+            if (launch.x > maxX)
             {
                 launch.x = maxX;
             }
-            if (launch.y >= maxY)
+            if (launch.y > maxY)
             {
                 launch.y = maxY;
             }
-            if (launch.x <= -maxX)
+            if (launch.x < -maxX)
             {
-
-
+                launch.x = -maxX;
             }
             print(launch.x.ToString() + "x " + launch.y.ToString() + "y :After");
 
-
-            //if (launch.y >= minLaunchHight)
-            //{
-            //    GetComponent<Rigidbody2D>().velocity += launch * power;
-
-            //    grounded = false;
-            //}
         }
         if (Input.GetKeyUp(KeyCode.Z))
         {
