@@ -6,35 +6,48 @@ public class Caught : MonoBehaviour {
 
     public UI_Manager UI;
     public bool blink;
+    public bool startOff;
     public float blinkTimer = 5f;
     private float timePassed;
     public SpriteRenderer sR;
     public PolygonCollider2D pC;
 
+    private void Start()
+    {
+        Color tmp = sR.color;
+        if (startOff)
+        {
+            LightOff(tmp);
+        }
+        else
+        {
+            LightOn(tmp);
+        }
+    }
     private void Update()
     {
         if (blink)
         {
             if (timePassed >= blinkTimer)
             {
-                timePassed += Time.deltaTime;
-            }
-            else
-            {
-                if (sR.enabled)
+                Color tmp = sR.color;
+                if (pC.enabled)
                 {
-                    sR.enabled = false;
-                    pC.enabled = false;
+                    LightOff(tmp);
                 }
                 else
                 {
-                    sR.enabled = true;
-                    pC.enabled = true;
+                    LightOn(tmp);
                 }
                 timePassed = 0;
             }
+            else
+            {
+                timePassed += Time.deltaTime;
+            }
         }
     }
+
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -43,5 +56,23 @@ public class Caught : MonoBehaviour {
             print("Opdaget - Start");
             UI.Caught();
         }
+        else if (col.gameObject.tag ==("Win"))
+        {
+
+        }
+    }
+
+    void LightOff(Color tmp)
+    {
+        tmp.a = 0.1f;
+        sR.color = tmp;
+        pC.enabled = false;
+    }
+
+    void LightOn(Color tmp)
+    {
+        tmp.a = 0.65f;
+        sR.color = tmp;
+        pC.enabled = true;
     }
 }
