@@ -18,7 +18,7 @@ public class PlayerLaunch : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-		if (Input.GetKey(KeyCode.Z) && grounded)
+		if (Input.GetKey(KeyCode.Mouse0) && grounded)
         {
             animController.SetBool("keyDown", true);
             //find spillerens position som vector
@@ -43,7 +43,7 @@ public class PlayerLaunch : MonoBehaviour {
             print(launch.x.ToString() + "x " + launch.y.ToString() + "y :After");
 
         }
-        if (Input.GetKeyUp(KeyCode.Z))
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             if (launch.y >= minLaunchHight && grounded)
             {

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public GameObject caughtCanvas;
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name != "StartScreen")
+        if (SceneManager.GetActiveScene().name == "Level 1")
         {
             caughtCanvas.GetComponent<Canvas>().enabled = false;
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Caught : MonoBehaviour {
 
     public UI_Manager UI;
+    public MusicManager MM;
     public bool blink;
     public bool startOff;
     public float blinkTimer = 5f;
@@ -55,6 +56,7 @@ public class Caught : MonoBehaviour {
         {
             print("Opdaget - Start");
             UI.Caught();
+            MM.Lose();
         }
         else if (col.gameObject.tag ==("Win"))
         {

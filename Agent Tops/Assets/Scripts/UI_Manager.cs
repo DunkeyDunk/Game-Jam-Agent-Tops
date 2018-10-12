@@ -27,10 +27,15 @@ public class UI_Manager : MonoBehaviour
     }
     public void Exit()
     {
-        Exit();
+        Application.Quit();
     }
-    public void LoadLevel(string Level)
+    public void LoadLevel()
     {
-        SceneManager.LoadScene(Level);
+        SceneManager.LoadScene(1);
+    }
+
+    public void End()
+    {
+        SceneManager.LoadScene(2);
     }
 }
