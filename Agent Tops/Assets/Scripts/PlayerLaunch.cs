@@ -15,6 +15,7 @@ public class PlayerLaunch : MonoBehaviour {
     Vector2 launch;
     public Animator animController;
     public SpriteRenderer spriteRenderer;
+    private float time;
     
     // Update is called once per frame
     void Update () {
@@ -53,6 +54,17 @@ public class PlayerLaunch : MonoBehaviour {
                 grounded = false;
                 MM.Landing();
             }
+        }
+        if (time >= 5)
+        {
+            grounded = true;
+            time = 0;
+            animController.SetBool("Grounded", true);
+        }
+        else if(!grounded)
+        {
+            time += Time.deltaTime;
+
         }
 
 
