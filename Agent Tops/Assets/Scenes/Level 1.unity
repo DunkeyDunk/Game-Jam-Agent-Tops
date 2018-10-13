@@ -5304,7 +5304,7 @@ GameObject:
   - component: {fileID: 1577936103}
   m_Layer: 0
   m_Name: The Paper
-  m_TagString: Untagged
+  m_TagString: Win
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6102,11 +6102,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4148913013295140, guid: 380dc437343bc6943a565746586e1a02, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.16
+      value: -6.215
       objectReference: {fileID: 0}
     - target: {fileID: 4148913013295140, guid: 380dc437343bc6943a565746586e1a02, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: -0.031
       objectReference: {fileID: 0}
     - target: {fileID: 4148913013295140, guid: 380dc437343bc6943a565746586e1a02, type: 2}
       propertyPath: m_LocalPosition.z
