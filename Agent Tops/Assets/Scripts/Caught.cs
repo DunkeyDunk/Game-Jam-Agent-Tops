@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Caught : MonoBehaviour {
-
+    //Public script reference
     public UI_Manager UI;
     public MusicManager MM;
+    public SpriteRenderer sR;
+    public PolygonCollider2D pC;
+
+    //behavior settings
     public bool blink;
     public bool startOff;
     public float blinkTimer = 5f;
     private float timePassed;
-    public SpriteRenderer sR;
-    public PolygonCollider2D pC;
+    
 
     private void Start()
     {
+        //turn on and off the light
+        //based off the setting
         Color tmp = sR.color;
         if (startOff)
         {
@@ -27,6 +32,7 @@ public class Caught : MonoBehaviour {
     }
     private void Update()
     {
+        //turn on and off the light at intervels
         if (blink)
         {
             if (timePassed >= blinkTimer)
@@ -49,21 +55,18 @@ public class Caught : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D col)
     {
+        //check if the player is in the trigger
         if (col.gameObject.tag == "Player")
         {
-            print("Opdaget - Start");
+            //run the functions in UI and MM
             UI.Caught();
             MM.Lose();
         }
-        else if (col.gameObject.tag ==("Win"))
-        {
-
-        }
     }
 
+    //turn off the light
     void LightOff(Color tmp)
     {
         tmp.a = 0.1f;
@@ -71,6 +74,7 @@ public class Caught : MonoBehaviour {
         pC.enabled = false;
     }
 
+    //turn on the light
     void LightOn(Color tmp)
     {
         tmp.a = 0.65f;

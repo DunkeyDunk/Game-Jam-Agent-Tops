@@ -4,31 +4,40 @@ using UnityEngine;
 using UnityEngine.Animations;
 
 public class PlayerLaunch : MonoBehaviour {
-
+    //public references
     public GameObject player;
     public MusicManager MM;
+    public Animator animController;
+    public SpriteRenderer spriteRenderer;
+
+    //public settings
     public float power;
-    private bool grounded = true;
     public float minLaunchHight;
     public float maxX;
     public float maxY;
+
+    //variables
     Vector2 launch;
-    public Animator animController;
-    public SpriteRenderer spriteRenderer;
+    private bool grounded = true;
     private float time;
     
     // Update is called once per frame
     void Update () {
+        //check if we are grounded when we try to jump
 		if (Input.GetKey(KeyCode.Mouse0) && grounded)
         {
+            //play animation
             animController.SetBool("keyDown", true);
-            //find spillerens position som vector
+            
+            //find the players position
             Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y);
-            //find musens position vector og minus spillere vectoren
+            //find the difference vector between the player and the mouse
             launch = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y)) - playerPos;
-
-            print(launch.x.ToString() + "x " + launch.y.ToString() + "y :Before");
+            
+            //run the flip function
             Flip(launch.x);
+
+            //logic checks for max launch
             if (launch.x > maxX)
             {
                 launch.x = maxX;
@@ -41,24 +50,31 @@ public class PlayerLaunch : MonoBehaviour {
             {
                 launch.x = -maxX;
             }
-            print(launch.x.ToString() + "x " + launch.y.ToString() + "y :After");
-
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            //check if we sould be able to launch
             if (launch.y >= minLaunchHight && grounded)
             {
+                //apply our velocity vector
                 GetComponent<Rigidbody2D>().velocity += launch * power;
+                
+                //play animations
                 animController.SetBool("Grounded", false);
                 animController.SetBool("keyDown", false);
                 grounded = false;
+                //run the function in MM
                 MM.Landing();
             }
         }
+        //Safety check if the player is !grounded but on the floor
+        //and not being able to jump
         if (time >= 5)
         {
+            //after 5 sec you will be able to jump
             grounded = true;
             time = 0;
+            //play animation
             animController.SetBool("Grounded", true);
         }
         else if(!grounded)
@@ -69,18 +85,21 @@ public class PlayerLaunch : MonoBehaviour {
 
 
     }
-    //checker om man rammer jorden
     void OnCollisionEnter2D(Collision2D col)
     {
+        //checks if you've hit the ground
         if (col.gameObject.tag == "Ground")
         {
+            //play animation
             animController.SetBool("Grounded", true);
-            //hvis man rammer mister man sin fart
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+
+            //removes any velocity
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             grounded = true;
             
         }
     }
+    //flips the player based on launch.x value
     void Flip(float x)
     {
         if (x >= 0) 

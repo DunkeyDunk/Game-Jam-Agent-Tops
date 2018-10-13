@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour {
 
+    //public audio clips
 	public AudioSource landing;
     public AudioSource menuClick;
     public AudioSource lose;
     public AudioSource Music;
 
+    //play the audio clips
+    ///////////////////////////////
     public void Landing()
     {
         landing.Play();
@@ -24,5 +27,5 @@ public class MusicManager : MonoBehaviour {
         Music.Stop();
         lose.Play();
     }
-
+    ///////////////////////////////
 }

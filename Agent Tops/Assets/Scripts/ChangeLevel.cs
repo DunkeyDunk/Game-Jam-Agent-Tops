@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeLevel : MonoBehaviour {
-
+    //codition bools
     bool inTrigger = false;
     bool winReady = false;
-
+    
+    //Public variables
     public GameObject player;
     public UI_Manager UI;
+
+    //Private variables
     private GameObject door;
     private Vector2 newPos;
     
@@ -21,12 +24,16 @@ public class ChangeLevel : MonoBehaviour {
             if (inTrigger == true)
             {
                 Vector2 pos;
-                print("inTrigger: x +" + door);
+                //create a Target reference
                 Target target = (Target)door.GetComponent(typeof(Target));
+                
+                //run the function in the Target script
                 pos = target.GetTarget();
+                
+                //move the player
                 player.GetComponent<Transform>().position = pos;
-                print(pos);
             }
+
             if (winReady == true)
             {
                 UI.End();
@@ -36,9 +43,9 @@ public class ChangeLevel : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col) {
         
+        //checks the tag on the colided object
         if (col.gameObject.tag == "Door")
         {
-            print("inTrigger: col");
             door = col.gameObject;
             inTrigger = true;
         }
@@ -51,6 +58,7 @@ public class ChangeLevel : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D col)
     {
+        //checks the tag on the colided object
         if (col.gameObject.tag == "Door")
         {
             inTrigger = false;
